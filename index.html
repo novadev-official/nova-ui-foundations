@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Nova Development</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Space+Grotesk:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Specific overrides for the login page to center it perfectly */
+        body {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            /* Prevent scrolling on the login page */
+        }
+
+        .login-wrapper {
+            width: 100%;
+            max-width: 450px;
+            padding: 2rem;
+            z-index: 10;
+        }
+
+        .otp-group {
+            display: none;
+            /* Hidden by default */
+            animation: fadeIn 0.5s ease;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="bg-canvas"></canvas>
+    <div class="noise-overlay"></div>
+    <div class="gradient-bg"></div>
+
+    <div class="login-wrapper">
+        <div class="contact-container glass">
+            <div class="logo" style="margin-bottom: 2rem;">NOVA DEVELOPMENTS<span class="dot">.</span></div>
+            <h2 id="login-title" style="margin-bottom: 0.5rem;">Welcome Back</h2>
+            <p id="login-desc" style="margin-bottom: 2rem;">Access your project dashboard</p>
+
+            <form class="login-form" id="loginForm">
+                <!-- Step 1: Credentials -->
+                <div id="credentials-step">
+                    <div style="text-align: center; margin-bottom: 1rem;">
+                        <span
+                            style="background: rgba(0, 255, 136, 0.1); color: #00ff88; padding: 0.2rem 0.8rem; border-radius: 20px; font-size: 0.75rem; border: 1px solid rgba(0, 255, 136, 0.3);">
+                            🔒 256-bit Secure
+                        </span>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="email" id="email" placeholder="Email Address" required>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="text" id="userId" placeholder="User ID" required>
+                    </div>
+
+                    <div class="input-group" style="display: flex; gap: 0.5rem; align-items: center;">
+                        <div
+                            style="padding: 1rem; background: rgba(0, 0, 0, 0.3); border: 1px solid var(--glass-border); border-radius: 10px; color: var(--text-color); font-weight: 600; min-width: 80px; text-align: center;">
+                            🇮🇳 +91
+                        </div>
+                        <input type="tel" id="phoneNumber" placeholder="WhatsApp Number" required style="flex: 1;"
+                            maxlength="10" pattern="[6-9][0-9]{9}"
+                            oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                    </div>
+                </div>
+
+                <!-- Step 2: OTP -->
+                <div id="otp-step" class="otp-group">
+                    <div class="input-group">
+                        <input type="text" id="otpInput" placeholder="Enter OTP" maxlength="6"
+                            style="text-align: center; letter-spacing: 5px; font-size: 1.2rem;">
+                    </div>
+                    <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: -10px; margin-bottom: 1rem;">
+                        OTP sent to <span id="display-phone" style="color: var(--primary-color);"></span>
+                    </p>
+                </div>
+
+                <button type="submit" id="submitBtn" class="btn primary full-width">Get OTP</button>
+
+                <div style="margin-top: 1.5rem; font-size: 0.9rem;">
+                    <a href="#" id="resendLink"
+                        style="color: var(--text-muted); text-decoration: none; display: none;">Resend OTP</a>
+                    <br>
+                    <a href="#" style="color: var(--text-muted); text-decoration: none;">Forgot credentials?</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Background visual element tailored for login -->
+    <div class="glowing-orb" style="position: fixed; top: -20%; right: -10%; width: 50vw; height: 50vw; opacity: 0.4;">
+    </div>
+    <div class="glowing-orb"
+        style="position: fixed; bottom: -20%; left: -10%; width: 40vw; height: 40vw; opacity: 0.3; animation-delay: -5s; background: radial-gradient(circle at 30% 30%, rgba(189, 0, 255, 0.4), rgba(0, 242, 255, 0.1) 60%, transparent 70%);">
+    </div>
+
+    <script src="login-background.js"></script>
+    <script src="script.js"></script>
+    <script src="login.js"></script>
+</body>
+
+</html>
